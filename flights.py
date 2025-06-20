@@ -82,7 +82,34 @@ plt.ylabel('Number of Flights')
 plt.title('Airline A Flights Forecast')
 plt.show()
 
+#Forcasting the time series for number of passengers
+monthly_passengers= dt.groupby('Fly_date')['Passengers'].sum().reset_index()
+monthly_passengers['Fly_date'] = pd.to_datetime(monthly_passengers['Fly_date'])
+monthly_passengers = monthly_passengers.sort_values(by='Fly_date')
+monthly_passengers.set_index('Fly_date', inplace=True)
+
+model = ExponentialSmoothing(monthly_passengers['Passengers'],
+                              trend='mul',
+                              seasonal='mul',
+                              damped_trend=True,
+                              seasonal_periods=12,
+                              initialization_method='estimated')
+
+
+fit = model.fit()
+forecast = fit.forecast(24)
+
+plt2.figure(figsize=(10, 5))
+plt2.plot(monthly_passengers['Passengers'], label='Observed')
+plt2.plot(forecast.index, forecast, label='Forecast', linestyle='--')
+plt2.legend(loc='lower right')
+plt2.xlabel('Year')
+plt2.ylabel('Number of Passengers')
+plt2.title('Holt-Winters Forecast')
+plt2.show()
+
 # Display the plots in Streamlit
 st.plotly_chart(fig1)
 st.plotly_chart(fig2)
 st.pyplot(plt)
+st.pyplot(plt2)
