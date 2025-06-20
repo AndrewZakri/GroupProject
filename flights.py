@@ -57,7 +57,6 @@ fig2 = px.line(
 fig2.show(0)
 
 #Forcasting the time series for number of flights
-
 monthly_flights = dt.groupby('Fly_date')['Flights'].sum().reset_index()
 monthly_flights['Fly_date'] = pd.to_datetime(monthly_flights['Fly_date'])
 monthly_flights = monthly_flights.sort_values(by='Fly_date')
@@ -80,7 +79,7 @@ plt.plot(forecast.index, forecast, label='Forecast', linestyle='--')
 plt.legend()
 plt.xlabel('Year')
 plt.ylabel('Number of Flights')
-plt.title('Holt-Winters Forecast')
+plt.title('Airline A Flights Forecast')
 plt.show()
 
 # Display the plots in Streamlit
