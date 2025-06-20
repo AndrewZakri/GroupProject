@@ -175,4 +175,6 @@ axes[2].set_ylabel('Total Flights')
 
 plt.tight_layout()
 plt.show()
+
+st.subheader("Airline A Passengers, Seats & Flights by Calendar Month")
 st.pyplot(fig)
