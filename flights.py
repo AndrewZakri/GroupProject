@@ -83,6 +83,16 @@ plt.xlabel('Year')
 plt.ylabel('Number of Passengers')
 plt.title('Holt-Winters Forecast for Passengers')
 
+#Make a histogram of Distance from the data dratio, dont need if statement
+plt.figure(figsize=(10, 6))
+plt.hist(dd['Distance'], bins=50, edgecolor='black')
+plt.title('Histogram of Distance (1990-2008)')
+plt.xlabel('Distance')
+plt.ylabel('Frequency')
+plt.xticks(ticks=range(0, int(dd['Distance'].max()) + 500, 500))
+plt.grid(axis='y', alpha=0.75)
+plt.show()
+
 
 # Display the plots in Streamlit
 st.plotly_chart(fig2)
@@ -90,3 +100,6 @@ st.plotly_chart(fig2)
 st.plotly_chart(fig1)
 st.subheader("Airline A Passenger Forecast")
 st.pyplot(plt)
+
+st.pyplot(plt)
+
