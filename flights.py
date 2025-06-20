@@ -62,7 +62,7 @@ monthly_flights['Fly_date'] = pd.to_datetime(monthly_flights['Fly_date'])
 monthly_flights = monthly_flights.sort_values(by='Fly_date')
 monthly_flights.set_index('Fly_date', inplace=True)
 
-model = ExponentialSmoothing(monthly_flights['Flights'],
+model1 = ExponentialSmoothing(monthly_flights['Flights'],
                               trend='mul',
                               seasonal='mul',
                               damped_trend=True,
@@ -70,7 +70,7 @@ model = ExponentialSmoothing(monthly_flights['Flights'],
                               initialization_method='estimated')
 
 
-fit = model.fit()
+fit = model1.fit()
 forecast = fit.forecast(24)
 
 plt.figure(figsize=(10, 5))
@@ -88,7 +88,7 @@ monthly_passengers['Fly_date'] = pd.to_datetime(monthly_passengers['Fly_date'])
 monthly_passengers = monthly_passengers.sort_values(by='Fly_date')
 monthly_passengers.set_index('Fly_date', inplace=True)
 
-model = ExponentialSmoothing(monthly_passengers['Passengers'],
+model2 = ExponentialSmoothing(monthly_passengers['Passengers'],
                               trend='mul',
                               seasonal='mul',
                               damped_trend=True,
@@ -96,7 +96,7 @@ model = ExponentialSmoothing(monthly_passengers['Passengers'],
                               initialization_method='estimated')
 
 
-fit = model.fit()
+fit = model2.fit()
 forecast = fit.forecast(24)
 
 plt.figure(figsize=(10, 5))
