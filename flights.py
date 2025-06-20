@@ -193,7 +193,7 @@ plt.ylabel('Average Utilization')
 plt.show()
 
 st.subheader("Airline A Seat Utilization by Months (1990-2008)")
-st.pyplot(fig)
+st.pyplot(plt)
 plt.clf()
 
 APPF = Passengers['Passengers']/Flights['Flights']
@@ -209,5 +209,5 @@ plt.ylabel('Average Passenger Count')
 plt.show()
 
 st.subheader("Airline A Average Passengers per Flights (1990-2008)")
-st.pyplot(fig)
+st.pyplot(plt)
 plt.clf()
