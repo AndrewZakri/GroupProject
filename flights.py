@@ -25,7 +25,7 @@ monthly_passengers = monthly_passengers.sort_values(by='Fly_date')
 monthly_passengers['Rolling_Avg'] = monthly_passengers['Passengers'].rolling(window=3).mean()
 
 #Create a line chart
-fig = px.line(
+fig1 = px.line(
     monthly_passengers,
     x='Fly_date',
     y=['Passengers', 'Rolling_Avg'],
@@ -35,7 +35,27 @@ fig = px.line(
         'Rolling_Avg': 'green'
     }
 )
-fig.show(0)
+fig1.show(0)
+
+monthly_flights = dt.groupby('Fly_date')['Flights'].sum().reset_index()
+monthly_flights['Fly_date'] = pd.to_datetime(monthly_flights['Fly_date'])
+monthly_flights = monthly_flights.sort_values(by='Fly_date')
+monthly_flights['Rolling_Avg'] = monthly_flights['Flights'].rolling(window=3).mean()
+
+fig2 = px.line(
+    monthly_flights,
+    x='Fly_date',
+    y=['Flights', 'Rolling_Avg'],
+    title='Monthly Flights with Rolling Average (3 months)',
+    labels={'Fly_date': 'Year', 'Flights': 'Number of Flights'},
+    color_discrete_map={
+        'Flights': 'blue',
+        'Rolling_Avg': 'green'
+    }
+)
+fig2.show(0)
+
 
 # Display the plot in Streamlit
-st.plotly_chart(fig)
+st.plotly_chart(fig1)
+st.plotly_chart(fig2)
