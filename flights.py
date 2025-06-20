@@ -178,3 +178,36 @@ plt.show()
 
 st.subheader("Airline A Passengers, Seats & Flights by Calendar Month")
 st.pyplot(fig)
+plt.clf()
+
+Utilization = Passengers['Passengers']/Seats['Seats']
+Utilization = pd.DataFrame({'month': Passengers['month'], 'Utilization': Utilization})
+Utilization['month'] = pd.Categorical(Utilization['month'], categories=month_order, ordered=True)
+Utilization = Utilization.sort_values('month')
+
+# Utilization of seats by Months
+plt.figure(figsize=(10, 6))
+plt.bar(Utilization['month'], Utilization['Utilization'], color='purple')
+plt.xlabel('Month')
+plt.ylabel('Average Utilization')
+plt.show()
+
+st.subheader("Airline A Seat Utilization by Months (1990-2008)")
+st.pyplot(fig)
+plt.clf()
+
+APPF = Passengers['Passengers']/Flights['Flights']
+APPF = pd.DataFrame({'month': Passengers['month'], 'APPF': APPF})
+APPF['month'] = pd.Categorical(APPF['month'], categories=month_order, ordered=True)
+APPF = APPF.sort_values('month')
+
+# Average passenger per flight by Months
+plt.figure(figsize=(10, 6))
+plt.bar(APPF['month'], APPF['APPF'], color='purple')
+plt.xlabel('Month')
+plt.ylabel('Average Passenger Count')
+plt.show()
+
+st.subheader("Airline A Average Passengers per Flights (1990-2008)")
+st.pyplot(fig)
+plt.clf()
