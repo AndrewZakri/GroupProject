@@ -56,6 +56,7 @@ fig2 = px.line(
 )
 fig2.show(0)
 
+
 # ----------------- Forecasting Flights ------------------
 # Preprocess the data for monthly flights
 monthly_flights = dt.groupby('Fly_date')['Flights'].sum().reset_index()
