@@ -110,8 +110,6 @@ plt.xlabel('Year')
 plt.ylabel('Number of Passengers')
 plt.title('Holt-Winters Forecast for Passengers')
 
-
-
 # Display the plots in Streamlit
 st.plotly_chart(fig1)
 st.subheader("Airline A Flight Forecast")
