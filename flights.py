@@ -135,3 +135,35 @@ plt.show()
 st.subheader("Airline A Flight Distance Frequency")
 st.pyplot(plt)
 
+# prompt: plot the bargraph of Passengers, Seats, Flights by the months in the 3 figures of the same fig
+
+# Order months correctly
+month_order = [calendar.month_abbr[i] for i in range(1, 13)]
+Passengers['month'] = pd.Categorical(Passengers['month'], categories=month_order, ordered=True)
+Seats['month'] = pd.Categorical(Seats['month'], categories=month_order, ordered=True)
+Flights['month'] = pd.Categorical(Flights['month'], categories=month_order, ordered=True)
+
+Passengers = Passengers.sort_values('month')
+Seats = Seats.sort_values('month')
+Flights = Flights.sort_values('month')
+
+fig, axes = plt.subplots(1, 3, figsize=(15, 10))
+
+axes[0].bar(Passengers['month'], Passengers['Passengers'])
+axes[0].set_title('Total Passengers by Months (1990-2008)')
+axes[0].set_xlabel('Month')
+axes[0].set_ylabel('Total Passengers')
+
+axes[1].bar(Seats['month'], Seats['Seats'], color='orange')
+axes[1].set_title('Total Seats by Months (1990-2008)')
+axes[1].set_xlabel('Month')
+axes[1].set_ylabel('Total Seats')
+
+axes[2].bar(Flights['month'], Flights['Flights'], color='green')
+axes[2].set_title('Total Flights by Months (1990-2008)')
+axes[2].set_xlabel('Month')
+axes[2].set_ylabel('Total Flights')
+
+plt.tight_layout()
+plt.show()
+st.pyplot(fig)
