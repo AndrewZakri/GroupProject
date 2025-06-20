@@ -110,6 +110,8 @@ plt.show()
 
 # Display the plots in Streamlit
 st.plotly_chart(fig1)
-st.plotly_chart(fig2)
+st.subheader("Airline A Flight Forecast")
 st.pyplot(plt)
+st.plotly_chart(fig2)
+st.subheader("Airline A Passenger Forecast")
 st.pyplot(plt)
