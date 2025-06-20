@@ -6,6 +6,4 @@ math
 calendar
 exponentialsmoothing
 mathplotlib
-point
-linestring
-polygon
+shapely
