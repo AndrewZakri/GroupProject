@@ -42,6 +42,7 @@ monthly_flights['Fly_date'] = pd.to_datetime(monthly_flights['Fly_date'])
 monthly_flights = monthly_flights.sort_values(by='Fly_date')
 monthly_flights['Rolling_Avg'] = monthly_flights['Flights'].rolling(window=3).mean()
 
+#Create a second line chart
 fig2 = px.line(
     monthly_flights,
     x='Fly_date',
@@ -55,7 +56,34 @@ fig2 = px.line(
 )
 fig2.show(0)
 
+#Forcasting the time series for number of flights
 
-# Display the plot in Streamlit
+monthly_flights = dt.groupby('Fly_date')['Flights'].sum().reset_index()
+monthly_flights['Fly_date'] = pd.to_datetime(monthly_flights['Fly_date'])
+monthly_flights = monthly_flights.sort_values(by='Fly_date')
+monthly_flights.set_index('Fly_date', inplace=True)
+
+model = ExponentialSmoothing(monthly_flights['Flights'],
+                              trend='mul',
+                              seasonal='mul',
+                              damped_trend=True,
+                              seasonal_periods=12,
+                              initialization_method='estimated')
+
+
+fit = model.fit()
+forecast = fit.forecast(24)
+
+plt.figure(figsize=(10, 5))
+plt.plot(monthly_flights['Flights'], label='Observed')
+plt.plot(forecast.index, forecast, label='Forecast', linestyle='--')
+plt.legend()
+plt.xlabel('Year')
+plt.ylabel('Number of Flights')
+plt.title('Holt-Winters Forecast')
+plt.show()
+
+# Display the plots in Streamlit
 st.plotly_chart(fig1)
 st.plotly_chart(fig2)
+st.pyplot(plt)
