@@ -56,57 +56,61 @@ fig2 = px.line(
 )
 fig2.show(0)
 
-#Forcasting the time series for number of flights
+# ----------------- Forecasting Flights ------------------
+# Preprocess the data for monthly flights
 monthly_flights = dt.groupby('Fly_date')['Flights'].sum().reset_index()
 monthly_flights['Fly_date'] = pd.to_datetime(monthly_flights['Fly_date'])
 monthly_flights = monthly_flights.sort_values(by='Fly_date')
 monthly_flights.set_index('Fly_date', inplace=True)
 
-model1 = ExponentialSmoothing(monthly_flights['Flights'],
-                              trend='mul',
-                              seasonal='mul',
-                              damped_trend=True,
-                              seasonal_periods=12,
-                              initialization_method='estimated')
+# Fit the Holt-Winters Exponential Smoothing Model for Flights (multiplicative trend and seasonality)
+model_flights = ExponentialSmoothing(monthly_flights['Flights'],
+                                      trend='mul',
+                                      seasonal='mul',
+                                      damped_trend=True,
+                                      seasonal_periods=12,
+                                      initialization_method='estimated')
 
+fit_flights = model_flights.fit()
+forecast_flights = fit_flights.forecast(24)
 
-fit = model1.fit()
-forecast = fit.forecast(24)
-
+# Plot for Flights Forecast
 plt.figure(figsize=(10, 5))
-plt.plot(monthly_flights['Flights'], label='Observed')
-plt.plot(forecast.index, forecast, label='Forecast', linestyle='--')
+plt.plot(monthly_flights['Flights'], label='Observed (Flights)', color='blue')
+plt.plot(forecast_flights.index, forecast_flights, label='Forecast (Flights)', linestyle='--', color='red')
 plt.legend()
 plt.xlabel('Year')
 plt.ylabel('Number of Flights')
-plt.title('Airline A Flights Forecast')
-plt.show()
+plt.title('Holt-Winters Forecast for Flights')
 
-#Forcasting the time series for number of passengers
-monthly_passengers= dt.groupby('Fly_date')['Passengers'].sum().reset_index()
+# ----------------- Forecasting Passengers ------------------
+# Preprocess the data for monthly passengers
+monthly_passengers = dt.groupby('Fly_date')['Passengers'].sum().reset_index()
 monthly_passengers['Fly_date'] = pd.to_datetime(monthly_passengers['Fly_date'])
 monthly_passengers = monthly_passengers.sort_values(by='Fly_date')
 monthly_passengers.set_index('Fly_date', inplace=True)
 
-model2 = ExponentialSmoothing(monthly_passengers['Passengers'],
-                              trend='mul',
-                              seasonal='mul',
-                              damped_trend=True,
-                              seasonal_periods=12,
-                              initialization_method='estimated')
+# Fit the Holt-Winters Exponential Smoothing Model for Passengers (multiplicative trend and seasonality)
+model_passengers = ExponentialSmoothing(monthly_passengers['Passengers'],
+                                         trend='mul',
+                                         seasonal='mul',
+                                         damped_trend=True,
+                                         seasonal_periods=12,
+                                         initialization_method='estimated')
 
+fit_passengers = model_passengers.fit()
+forecast_passengers = fit_passengers.forecast(24)
 
-fit = model2.fit()
-forecast = fit.forecast(24)
-
+# Plot for Passengers Forecast
 plt.figure(figsize=(10, 5))
-plt.plot(monthly_passengers['Passengers'], label='Observed')
-plt.plot(forecast.index, forecast, label='Forecast', linestyle='--')
+plt.plot(monthly_passengers['Passengers'], label='Observed (Passengers)', color='blue')
+plt.plot(forecast_passengers.index, forecast_passengers, label='Forecast (Passengers)', linestyle='--', color='green')
 plt.legend(loc='lower right')
 plt.xlabel('Year')
 plt.ylabel('Number of Passengers')
-plt.title('Holt-Winters Forecast')
-plt.show()
+plt.title('Holt-Winters Forecast for Passengers')
+
+
 
 # Display the plots in Streamlit
 st.plotly_chart(fig1)
