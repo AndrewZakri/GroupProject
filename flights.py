@@ -7,6 +7,7 @@ import calendar
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
 import matplotlib.pyplot as plt
 from shapely.geometry import Point, LineString, Polygon
+import streamlit as st
 
 #Data reading
 
@@ -30,3 +31,8 @@ fig = px.line(
     }
 )
 fig.show(0)
+
+# Display the plot in Streamlit
+st.title("Airline Passenger Data")
+st.write("Here is the trend of monthly passengers with a 3-month rolling average.")
+st.plotly_chart(fig)
