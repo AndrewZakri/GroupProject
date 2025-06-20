@@ -135,6 +135,14 @@ plt.show()
 st.subheader("Airline A Flight Distance Frequency")
 st.pyplot(plt)
 
+data = dt
+data['Fly_date'] = pd.to_datetime(data['Fly_date'])
+data['month'] = data['Fly_date'].dt.month.apply(lambda x: calendar.month_abbr[x])
+
+Passengers = data.groupby('month')['Passengers'].sum().reset_index()
+Seats = data.groupby('month')['Seats'].sum().reset_index()
+Flights = data.groupby('month')['Flights'].sum().reset_index()
+
 # prompt: plot the bargraph of Passengers, Seats, Flights by the months in the 3 figures of the same fig
 
 # Order months correctly
