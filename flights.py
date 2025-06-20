@@ -29,7 +29,6 @@ fig2 = px.line(
     monthly_flights,
     x='Fly_date',
     y=['Flights', 'Rolling_Avg'],
-    title='Monthly Flights with Rolling Average (3 months)',
     labels={'Fly_date': 'Year', 'Flights': 'Number of Flights'},
     color_discrete_map={
         'Flights': 'blue',
