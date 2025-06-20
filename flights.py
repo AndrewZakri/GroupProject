@@ -11,7 +11,7 @@ import streamlit as st
 
 #Title of the app
 st.title("Airline A Dashboard")
-st.write("Analysis of Airline A data to determine how to upgrade the existing fleet")
+st.write("Analysis of Airline A data to determine potential upgrade of existing fleet")
 
 #Data reading
 
