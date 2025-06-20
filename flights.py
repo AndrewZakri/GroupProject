@@ -134,6 +134,7 @@ plt.show()
 
 st.subheader("Airline A Flight Distance Frequency")
 st.pyplot(plt)
+plt.clf()
 
 data = dt
 data['Fly_date'] = pd.to_datetime(data['Fly_date'])
