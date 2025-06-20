@@ -81,7 +81,6 @@ fig1 = px.line(
     monthly_passengers,
     x='Fly_date',
     y=['Passengers', 'Rolling_Avg'],
-    title='Monthly Passengers with Rolling Average (3 months)',
     color_discrete_map={
         'Passengers': 'blue',
         'Rolling_Avg': 'green'
@@ -117,6 +116,7 @@ plt.ylabel('Number of Passengers')
 plt.title('Holt-Winters Forecast for Passengers')
 
 # Display the plots in Streamlit
+st.subheader("Airline A Monthly Passengers with Rolling Average (3 months)")
 st.plotly_chart(fig1)
 st.subheader("Airline A Passenger Forecast")
 st.pyplot(plt)
