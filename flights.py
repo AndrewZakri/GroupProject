@@ -68,6 +68,7 @@ plt.show()
 st.subheader("Airline A Monthly Flights with Rolling Average (3 months)")
 st.plotly_chart(fig2)
 st.subheader("Airline A Flights Forecast")
+st.subheader("Airline A Flights are forecast to decrease")
 st.pyplot(plt)
 plt.clf()
 
