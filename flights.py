@@ -19,28 +19,6 @@ df = pd.read_csv("Airports_P 1.csv")
 dt = pd.read_csv("Airports_T 1.csv")
 dd = pd.read_csv("Airports_D.csv")
 
-#Mapping the location of airports
-
-m = folium.Map(location=[39.8283, -98.5795], zoom_start=4)
-
-airports = df[['Origin_airport', 'Org_airport_lat', 'Org_airport_long','Origin_population']].drop_duplicates(subset=['Origin_airport'])
-airports.columns = ['Airport', 'Latitude', 'Longitude','Population']
-airports = airports.dropna()
-
-#This is the map of airport of all years of 1990,1994,1998,2002, and 2006 combined.
-#To filter the years, need to use streamlit
-#Something like filtered_df = df[df["Year"] == selected_year]
-
-for _, row in airports.iterrows():
-    folium.CircleMarker(
-        location=[row["Latitude"], row["Longitude"]],
-        radius=math.sqrt(math.sqrt(float(row["Population"])))/5,
-        popup=f"Airport:{row['Airport']}<br>Population:{row['Population']}",
-        color="blue",
-        fill=True,
-    ).add_to(m)
-m
-
 monthly_passengers = dt.groupby('Fly_date')['Passengers'].sum().reset_index()
 monthly_passengers['Fly_date'] = pd.to_datetime(monthly_passengers['Fly_date'])
 monthly_passengers = monthly_passengers.sort_values(by='Fly_date')
@@ -105,8 +83,6 @@ plt.xlabel('Year')
 plt.ylabel('Number of Passengers')
 plt.title('Holt-Winters Forecast for Passengers')
 
-st.write(f"Map showing airports in {selected_year}")
-st.markdown(m._repr_html_(), unsafe_allow_html=True)
 
 # Display the plots in Streamlit
 st.plotly_chart(fig2)
