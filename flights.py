@@ -132,5 +132,6 @@ plt.xticks(ticks=range(0, int(dd['Distance'].max()) + 500, 500))
 plt.grid(axis='y', alpha=0.75)
 plt.show()
 
+st.subheader("Airline A Flight Distance Frequency")
 st.pyplot(plt)
 
