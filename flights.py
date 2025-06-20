@@ -66,6 +66,7 @@ plt.title('Holt-Winters Forecast')
 plt.show()
 
 # Display the plots in Streamlit
+st.subheader("Airline A Monthly Flights with Rolling Average (3 months)")
 st.plotly_chart(fig2)
 st.subheader("Airline A Flights Forecast")
 st.pyplot(plt)
