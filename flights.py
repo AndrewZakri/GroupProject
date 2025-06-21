@@ -57,12 +57,6 @@ st.subheader("Map of US airports")
 map_html = m._repr_html_()
 html(map_html, height=500, width=700)
 
-#Data reading
-
-df = pd.read_csv("Airports_P 1.csv")
-dt = pd.read_csv("Airports_T 1.csv")
-dd = pd.read_csv("Airports_D.csv")
-
 monthly_flights = dt.groupby('Fly_date')['Flights'].sum().reset_index()
 monthly_flights['Fly_date'] = pd.to_datetime(monthly_flights['Fly_date'])
 monthly_flights = monthly_flights.sort_values(by='Fly_date')
@@ -80,6 +74,25 @@ fig2 = px.line(
     }
 )
 fig2.show(0)
+
+# Display the plots in Streamlit
+st.subheader("Airline A Monthly Flights with Rolling Average (3 months)")
+st.plotly_chart(fig2)
+plt.clf()
+
+#Make a histogram of Distance from the data dratio, dont need if statement
+plt.figure(figsize=(10, 6))
+plt.hist(dd['Distance'], bins=50, edgecolor='black')
+plt.title('Histogram of Distance (1990-2008)')
+plt.xlabel('Distance')
+plt.ylabel('Frequency')
+plt.xticks(ticks=range(0, int(dd['Distance'].max()) + 500, 500))
+plt.grid(axis='y', alpha=0.75)
+plt.show()
+
+st.subheader("Airline A Flight Distance Frequency")
+st.pyplot(plt)
+plt.clf()
 
 #Forcasting the time series for number of flights
 
@@ -108,9 +121,7 @@ plt.ylabel('Number of Flights')
 plt.title('Holt-Winters Forecast')
 plt.show()
 
-# Display the plots in Streamlit
-st.subheader("Airline A Monthly Flights with Rolling Average (3 months)")
-st.plotly_chart(fig2)
+# Display the plot in Streamlit
 st.subheader("Airline A Flights Forecast")
 st.pyplot(plt)
 plt.clf()
@@ -163,20 +174,6 @@ plt.title('Holt-Winters Forecast for Passengers')
 st.subheader("Airline A Monthly Passengers with Rolling Average (3 months)")
 st.plotly_chart(fig1)
 st.subheader("Airline A Passenger Forecast")
-st.pyplot(plt)
-plt.clf()
-
-#Make a histogram of Distance from the data dratio, dont need if statement
-plt.figure(figsize=(10, 6))
-plt.hist(dd['Distance'], bins=50, edgecolor='black')
-plt.title('Histogram of Distance (1990-2008)')
-plt.xlabel('Distance')
-plt.ylabel('Frequency')
-plt.xticks(ticks=range(0, int(dd['Distance'].max()) + 500, 500))
-plt.grid(axis='y', alpha=0.75)
-plt.show()
-
-st.subheader("Airline A Flight Distance Frequency")
 st.pyplot(plt)
 plt.clf()
 
