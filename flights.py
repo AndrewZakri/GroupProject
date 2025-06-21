@@ -12,13 +12,20 @@ import streamlit as st
 
 #Introduction to the Dashboard
 st.write("Introduction to the Dashboard:")
-st.write("Project Group One is acting as hypothetical consultants for an imaginary large American airline.")
-st.write("The airline has posed a critical business question: Should they purchase more planes for their fleet?")
-st.write("Our goal is to answer this using data visualization and analysis.")
+st.write("Project Group One is acting as hypothetical consultants for an imaginary large American airline. The airline has posed a critical business question: Should they purchase more planes for their fleet? Our goal is to answer this using data visualization and analysis.")
 
 #Title of the app
 st.title("Airline A Dashboard")
 st.write("PART ONE: What is the current status of the Client Airline’s Fleet?")
+st.write("Learning:")
+st.write("+  The number of airports is increasing")
+st.write("+  Airport networks are becoming more complex")
+st.write("+  Flights increased over time but have recently leveled off")
+st.write("+  Strong seasonal patterns exist in flight activity")
+st.write("+  Most flights are short in distance")
+st.write("+  The number of future flights is expected to remain steady")
+st.write("+  Passenger counts have steadily increased")
+st.write("+  Indicators suggest passenger growth will continue")
 
 #Data reading
 
@@ -65,8 +72,7 @@ map_html = m._repr_html_()
 html(map_html, height=500, width=700)
 
 st.write("Need for Airports:")
-st.write("From 1990 onward, the number of airports increased, potentially signaling higher demand for air travel.")
-st.write("However, this growth outpaces population increases, suggesting a shift in air travel infrastructure or strategy rather than demand alone.")
+st.write("From 1990 onward, the number of airports increased, potentially signaling higher demand for air travel. However, this growth outpaces population increases, suggesting a shift in air travel infrastructure or strategy rather than demand alone.")
 st.write("Learning:")
 st.write("+  The number of airports is increasing")
 st.write("+  Airport networks are becoming more complex")
@@ -95,8 +101,7 @@ st.plotly_chart(fig2)
 plt.clf()
 
 st.write("Changes in Flights:")
-st.write("Flights steadily increased over time, followed by a decline in recent years.")
-st.write("Our time series analysis also revealed consistent seasonal fluctuations, which complicates assumptions about constant demand growth.")
+st.write("Flights steadily increased over time, followed by a decline in recent years. Our time series analysis also revealed consistent seasonal fluctuations, which complicates assumptions about constant demand growth.")
 st.write("Learning:")
 st.write("+  Flights increased over time until recently")
 st.write("+  Seasonal fluctuations are consistent year-to-year")
@@ -117,8 +122,7 @@ st.pyplot(plt)
 plt.clf()
 
 st.write("The Average Flight Distance:")
-st.write("Most flights are short-haul, peaking around 250 miles.")
-st.write("While this doesn’t directly answer whether more planes are needed, it suggests a preference or need for smaller aircraft.")
+st.write("Most flights are short-haul, peaking around 250 miles. While this doesn’t directly answer whether more planes are needed, it suggests a preference or need for smaller aircraft.")
 st.write("Learning:")
 st.write("+  Most flights cover short distances")
 
@@ -155,8 +159,7 @@ st.pyplot(plt)
 plt.clf()
 
 st.write("Future Flights:")
-st.write("Predictive modeling shows that the total number of flights will likely remain steady.")
-st.write("This raises questions about how flight frequency relates to demand, especially when considered alongside seat and passenger data.")
+st.write("Predictive modeling shows that the total number of flights will likely remain steady. This raises questions about how flight frequency relates to demand, especially when considered alongside seat and passenger data.")
 st.write("Learning:")
 st.write("+  The number of future flights is expected to remain steady")
 
@@ -183,8 +186,7 @@ st.plotly_chart(fig1)
 plt.clf()
 
 st.write("Increase in Passengers:")
-st.write("While the number of flights has plateaued, passenger counts continue to grow.")
-st.write("This suggests increasing demand for air travel despite fewer flights, emphasizing the importance of per-flight capacity.")
+st.write("While the number of flights has plateaued, passenger counts continue to grow. This suggests increasing demand for air travel despite fewer flights, emphasizing the importance of per-flight capacity.")
 st.write("Learning:")
 st.write("+  Passenger counts have steadily increased over time")
 
@@ -221,12 +223,15 @@ st.pyplot(plt)
 plt.clf()
 
 st.write("Change in Passengers:")
-st.write("Passenger growth also shows a recent slowdown, similar to flight trends.")
-st.write("However, this dip is less dramatic and suggests potential for renewed growth in the future.")
+st.write("Passenger growth also shows a recent slowdown, similar to flight trends. However, this dip is less dramatic and suggests potential for renewed growth in the future.")
 st.write("Learning:")
 st.write("+  Indicators suggest continued growth in passenger volume")
 
 st.write("PART TWO: Seat Utilization")
+st.write("Learning:")
+st.write("+  Passenger and flight numbers peak in summer and drop in winter")
+st.write("+  There are often more seats than passengers, indicating underutilization")
+st.write("+  Seat utilization is significantly below 100% during certain months")
 
 data = dt
 data['Fly_date'] = pd.to_datetime(data['Fly_date'])
@@ -273,9 +278,7 @@ st.pyplot(fig)
 plt.clf()
 
 st.write("Continued Exploration on Passengers and Seats:")
-st.write("By aggregating data monthly, we identified strong seasonality.")
-st.write("While seats and flights scale together as expected, passengers do not always follow the same trend, especially in lower-demand months like February.")
-st.write("This reveals months with high empty seat counts, a key inefficiency.")
+st.write("By aggregating data monthly, we identified strong seasonality. While seats and flights scale together as expected, passengers do not always follow the same trend, especially in lower-demand months like February. This reveals months with high empty seat counts, a key inefficiency.")
 st.write("Learning:")
 st.write("+  Seasonal demand peaks in spring and summer")
 st.write("+  Some months have excess seat capacity compared to passengers")
@@ -320,5 +323,7 @@ st.write("+  Seat utilization dips below optimal levels during parts of the year
 
 st.subheader("Final Recommendation")
 st.write("Project Group One recommends not purchasing additional planes at this time. Instead, we advise the Client Airline to improve utilization of their existing fleet. Seasonal demand should guide scheduling and aircraft size. During low-demand months, consider reducing flight frequency or using smaller planes. If plane purchases are necessary in the future, prioritize smaller aircraft to align with short-haul trends and underutilization patterns.")
-
+st.write("+  Reduce flights or use smaller planes during seasonal dips")
+st.write("+  Prioritize purchasing smaller aircraft if expansion is necessary")
+st.write("+  Conduct further analysis on plane size and usage patterns")
 
