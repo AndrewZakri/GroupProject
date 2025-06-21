@@ -57,10 +57,10 @@ st.subheader("Map of US airports")
 map_html = m._repr_html_()
 html(map_html, height=500, width=700)
 
-st.write(<ins>"Need for Airports"</ins>)
+st.write("Need for Airports")
 st.write("From 1990 onward, the number of airports increased, potentially signaling higher demand for air travel.")
 st.write("However, this growth outpaces population increases, suggesting a shift in air travel infrastructure or strategy rather than demand alone.")
-st.write(<ins>"Learning:"</ins>)
+st.write("Learning:")
 st.write("+  The number of airports is increasing")
 st.write("+  Airport networks are becoming more complex")
 
