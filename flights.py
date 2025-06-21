@@ -9,6 +9,12 @@ import matplotlib.pyplot as plt
 from shapely.geometry import Point, LineString, Polygon
 import streamlit as st
 
+
+#Introduction to the Dashboard
+st.write("Project Group One is acting as hypothetical consultants for an imaginary large American airline.")
+st.write("The airline has posed a critical business question: Should they purchase more planes for their fleet?")
+st.write("Our goal is to answer this using data visualization and analysis.")
+
 #Title of the app
 st.title("Airline A Dashboard")
 st.write("Analysis of Airline A data to determine potential upgrade of existing fleet")
