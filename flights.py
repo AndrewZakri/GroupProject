@@ -11,6 +11,7 @@ import streamlit as st
 
 
 #Introduction to the Dashboard
+st.write("Introduction to the Dashboard")
 st.write("Project Group One is acting as hypothetical consultants for an imaginary large American airline.")
 st.write("The airline has posed a critical business question: Should they purchase more planes for their fleet?")
 st.write("Our goal is to answer this using data visualization and analysis.")
