@@ -16,7 +16,7 @@ st.write("Project Group One is acting as hypothetical consultants for an imagina
 
 #Title of the app
 st.title("Airline A Dashboard")
-st.write("PART ONE: What is the current status of the Client Airline’s Fleet?")
+st.subheader("PART ONE: What is the current status of the Client Airline’s Fleet?")
 st.write("Learning:")
 st.write("+  The number of airports is increasing")
 st.write("+  Airport networks are becoming more complex")
@@ -227,7 +227,7 @@ st.write("Passenger growth also shows a recent slowdown, similar to flight trend
 st.write("Learning:")
 st.write("+  Indicators suggest continued growth in passenger volume")
 
-st.write("PART TWO: Seat Utilization")
+st.subheader("PART TWO: Seat Utilization")
 st.write("Learning:")
 st.write("+  Passenger and flight numbers peak in summer and drop in winter")
 st.write("+  There are often more seats than passengers, indicating underutilization")
