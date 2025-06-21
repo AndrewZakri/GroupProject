@@ -318,3 +318,7 @@ st.write("While we lack details on plane size distribution, this aligns with the
 st.write("Learning:")
 st.write("+  Seat utilization dips below optimal levels during parts of the year")
 
+st.subheader("Final Recommendation")
+st.write("Project Group One recommends not purchasing additional planes at this time. Instead, we advise the Client Airline to improve utilization of their existing fleet. Seasonal demand should guide scheduling and aircraft size. During low-demand months, consider reducing flight frequency or using smaller planes. If plane purchases are necessary in the future, prioritize smaller aircraft to align with short-haul trends and underutilization patterns.")
+
+
