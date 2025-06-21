@@ -215,16 +215,16 @@ plt.xlabel('Year')
 plt.ylabel('Number of Passengers')
 plt.title('Holt-Winters Forecast for Passengers')
 
+# Display the plots in Streamlit
+st.subheader("Airline A Passenger Forecast")
+st.pyplot(plt)
+plt.clf()
+
 st.write("Change in Passengers:")
 st.write("Passenger growth also shows a recent slowdown, similar to flight trends.")
 st.write("However, this dip is less dramatic and suggests potential for renewed growth in the future.")
 st.write("Learning:")
 st.write("+  Indicators suggest continued growth in passenger volume")
-
-# Display the plots in Streamlit
-st.subheader("Airline A Passenger Forecast")
-st.pyplot(plt)
-plt.clf()
 
 data = dt
 data['Fly_date'] = pd.to_datetime(data['Fly_date'])
