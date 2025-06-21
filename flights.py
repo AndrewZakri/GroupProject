@@ -18,7 +18,7 @@ st.write("Our goal is to answer this using data visualization and analysis.")
 
 #Title of the app
 st.title("Airline A Dashboard")
-st.write("Analysis of Airline A data to determine potential upgrade of existing fleet")
+st.write("PART ONE: What is the current status of the Client Airline’s Fleet?")
 
 #Data reading
 
@@ -225,6 +225,8 @@ st.write("Passenger growth also shows a recent slowdown, similar to flight trend
 st.write("However, this dip is less dramatic and suggests potential for renewed growth in the future.")
 st.write("Learning:")
 st.write("+  Indicators suggest continued growth in passenger volume")
+
+st.write("PART TWO: Seat Utilization")
 
 data = dt
 data['Fly_date'] = pd.to_datetime(data['Fly_date'])
