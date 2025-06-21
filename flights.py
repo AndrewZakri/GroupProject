@@ -94,6 +94,14 @@ st.subheader("Airline A Monthly Flights with Rolling Average (3 months)")
 st.plotly_chart(fig2)
 plt.clf()
 
+st.write("Changes in Flights:")
+st.write("Flights steadily increased over time, followed by a decline in recent years.")
+st.write("Our time series analysis also revealed consistent seasonal fluctuations, which complicates assumptions about constant demand growth.")
+st.write("Learning:")
+st.write("+  Flights increased over time until recently")
+st.write("+  Seasonal fluctuations are consistent year-to-year")
+
+
 #Make a histogram of Distance from the data dratio, dont need if statement
 plt.figure(figsize=(10, 6))
 plt.hist(dd['Distance'], bins=50, edgecolor='black')
