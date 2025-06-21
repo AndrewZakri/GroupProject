@@ -116,6 +116,12 @@ st.subheader("Airline A Flight Distance Frequency")
 st.pyplot(plt)
 plt.clf()
 
+st.write("The Average Flight Distance:")
+st.write("Most flights are short-haul, peaking around 250 miles.")
+st.write("While this doesn’t directly answer whether more planes are needed, it suggests a preference or need for smaller aircraft.")
+st.write("Learning:")
+st.write("+  Most flights cover short distances")
+
 #Forcasting the time series for number of flights
 
 monthly_flights = dt.groupby('Fly_date')['Flights'].sum().reset_index()
@@ -148,6 +154,12 @@ st.subheader("Airline A Flights Forecast")
 st.pyplot(plt)
 plt.clf()
 
+st.write("Future Flights:")
+st.write("Predictive modeling shows that the total number of flights will likely remain steady.")
+st.write("This raises questions about how flight frequency relates to demand, especially when considered alongside seat and passenger data.")
+st.write("Learning:")
+st.write("+  The number of future flights is expected to remain steady")
+
 monthly_passengers = dt.groupby('Fly_date')['Passengers'].sum().reset_index()
 monthly_passengers['Fly_date'] = pd.to_datetime(monthly_passengers['Fly_date'])
 monthly_passengers = monthly_passengers.sort_values(by='Fly_date')
@@ -164,6 +176,17 @@ fig1 = px.line(
     }
 )
 fig1.show(0)
+
+# Display the plots in Streamlit
+st.subheader("Airline A Monthly Passengers with Rolling Average (3 months)")
+st.plotly_chart(fig1)
+plt.clf()
+
+st.write("Increase in Passengers:")
+st.write("While the number of flights has plateaued, passenger counts continue to grow.")
+st.write("This suggests increasing demand for air travel despite fewer flights, emphasizing the importance of per-flight capacity.")
+st.write("Learning:")
+st.write("+  Passenger counts have steadily increased over time")
 
 # ----------------- Forecasting Passengers ------------------
 # Preprocess the data for monthly passengers
@@ -192,9 +215,13 @@ plt.xlabel('Year')
 plt.ylabel('Number of Passengers')
 plt.title('Holt-Winters Forecast for Passengers')
 
+st.write("Change in Passengers:")
+st.write("Passenger growth also shows a recent slowdown, similar to flight trends.")
+st.write("However, this dip is less dramatic and suggests potential for renewed growth in the future.")
+st.write("Learning:")
+st.write("+  Indicators suggest continued growth in passenger volume")
+
 # Display the plots in Streamlit
-st.subheader("Airline A Monthly Passengers with Rolling Average (3 months)")
-st.plotly_chart(fig1)
 st.subheader("Airline A Passenger Forecast")
 st.pyplot(plt)
 plt.clf()
@@ -243,6 +270,14 @@ st.subheader("Airline A Passengers, Seats & Flights by Calendar Month")
 st.pyplot(fig)
 plt.clf()
 
+st.write("Continued Exploration on Passengers and Seats:")
+st.write("By aggregating data monthly, we identified strong seasonality.")
+st.write("While seats and flights scale together as expected, passengers do not always follow the same trend, especially in lower-demand months like February.")
+st.write("This reveals months with high empty seat counts, a key inefficiency.")
+st.write("Learning:")
+st.write("+  Seasonal demand peaks in spring and summer")
+st.write("+  Some months have excess seat capacity compared to passengers")
+
 Utilization = Passengers['Passengers']/Seats['Seats']
 Utilization = pd.DataFrame({'month': Passengers['month'], 'Utilization': Utilization})
 Utilization['month'] = pd.Categorical(Utilization['month'], categories=month_order, ordered=True)
@@ -274,3 +309,10 @@ plt.show()
 st.subheader("Airline A Average Passengers per Flights (1990-2008)")
 st.pyplot(plt)
 plt.clf()
+
+st.write("Seat Utilization:")
+st.write("Average passengers per flight range between 60 and 80.")
+st.write("While we lack details on plane size distribution, this aligns with the predominance of short-distance flights and suggests an opportunity to better match plane size to seasonal demand.")
+st.write("Learning:")
+st.write("+  Seat utilization dips below optimal levels during parts of the year")
+
