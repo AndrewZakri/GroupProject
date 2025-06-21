@@ -11,7 +11,7 @@ import streamlit as st
 
 
 #Introduction to the Dashboard
-st.write("Introduction to the Dashboard")
+st.write("Introduction to the Dashboard:")
 st.write("Project Group One is acting as hypothetical consultants for an imaginary large American airline.")
 st.write("The airline has posed a critical business question: Should they purchase more planes for their fleet?")
 st.write("Our goal is to answer this using data visualization and analysis.")
@@ -64,7 +64,7 @@ st.subheader("Map of US airports")
 map_html = m._repr_html_()
 html(map_html, height=500, width=700)
 
-st.write("Need for Airports")
+st.write("Need for Airports:")
 st.write("From 1990 onward, the number of airports increased, potentially signaling higher demand for air travel.")
 st.write("However, this growth outpaces population increases, suggesting a shift in air travel infrastructure or strategy rather than demand alone.")
 st.write("Learning:")
