@@ -57,6 +57,10 @@ st.subheader("Map of US airports")
 map_html = m._repr_html_()
 html(map_html, height=500, width=700)
 
+st.write("Need for Airports")
+st.write(From 1990 onward, the number of airports increased, potentially signaling higher demand for air travel. 
+However, this growth outpaces population increases, suggesting a shift in air travel infrastructure or strategy rather than demand alone.")
+
 monthly_flights = dt.groupby('Fly_date')['Flights'].sum().reset_index()
 monthly_flights['Fly_date'] = pd.to_datetime(monthly_flights['Fly_date'])
 monthly_flights = monthly_flights.sort_values(by='Fly_date')
