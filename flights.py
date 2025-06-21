@@ -316,8 +316,7 @@ st.pyplot(plt)
 plt.clf()
 
 st.write("Seat Utilization:")
-st.write("Average passengers per flight range between 60 and 80.")
-st.write("While we lack details on plane size distribution, this aligns with the predominance of short-distance flights and suggests an opportunity to better match plane size to seasonal demand.")
+st.write("Average passengers per flight range between 60 and 80. While we lack details on plane size distribution, this aligns with the predominance of short-distance flights and suggests an opportunity to better match plane size to seasonal demand.")
 st.write("Learning:")
 st.write("+  Seat utilization dips below optimal levels during parts of the year")
 
