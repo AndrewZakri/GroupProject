@@ -40,12 +40,13 @@ m = folium.Map(location=[39.8283, -98.5795], zoom_start=4)
 for _, row in airports.iterrows():
     folium.CircleMarker(
         location=[row["Latitude"], row["Longitude"]],
-        radius=math.sqrt(math.sqrt(float(row["Population"])))/5,
+        radius=math.sqrt(math.sqrt(float(row["Population"]))) / 5,
         popup=f"Airport: {row['Airport']}<br>Population: {row['Population']}",
         color="blue",
         fill=True,
     ).add_to(m)
 
+# Display the map in Streamlit
 st.subheader("Map of US airports")
 map_html = m._repr_html_()
 html(map_html, height=500, width=700)
